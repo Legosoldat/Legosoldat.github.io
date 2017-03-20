@@ -24,12 +24,14 @@
   
 <body>
 <div id="container">
-    <video autoplay="true" id="videoElement">
+    <video autoplay="true" id="videoElement" onclick="handleClick()">
      
     </video>
 </div>
 <script>
 	var video = document.querySelector("#videoElement");
+	
+	var paused = true
 	 
 	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 	 
@@ -40,7 +42,17 @@
 	function handleVideo(stream) {
 		video.src = window.URL.createObjectURL(stream);
 	}
-	 
+	
+	function handleClick() {
+		if (paused) {
+			paused = false
+			document.getElementByID('videoElement').play();
+		} else {
+			paused = true
+			document.getElementByID('videoElement').pause();
+		}
+	}
+	
 	function videoError(e) {
 		// do something
 	}
