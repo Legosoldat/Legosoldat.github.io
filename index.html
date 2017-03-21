@@ -88,7 +88,7 @@
 		"<br>Longitude: " + position.coords.longitude;
 	}
 	function downloadCanvas(link, canvasId, filename) {
-		link.href = document.getElementById(canvasId).toDataURL(filename);
+		link.href = document.getElementById(canvasId).toDataURL('image/png');
 		link.download = filename;
 	}
 	document.getElementById('imageElement').addEventListener('click', function() {
