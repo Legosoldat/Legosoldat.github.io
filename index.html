@@ -14,7 +14,12 @@
     height: 375px;
     border: 10px #333 solid;
 }
-#mediaElement {
+#videoElement {
+    width: 500px;
+    height: 375px;
+    background-color: #666;
+}
+#imageElement {
     width: 500px;
     height: 375px;
     background-color: #666;
@@ -24,17 +29,17 @@
   
 <body>
 <div id="container">
-    <video autoplay="true" id="mediaElement" onclick="handleClick()">
+    <video autoplay="true" id="videoElement" onclick="handleClick()">
      
     </video>
 </div>
 <div id="container">
-	<img id="mediaElement">
+	<img id="imageElement">
 	
 	</img>
 </div>
 <script>
-	var video = document.querySelector("#mediaElement");
+	var video = document.querySelector("#videoElement");
 	
 	var paused = true
 	 
@@ -49,13 +54,11 @@
 	}
 	
 	function handleClick() {
-		if (paused) {
-			paused = false
-			document.getElementByID('mediaElement').play();
-		} else {
-			paused = true
-			document.getElementByID('mediaElement').pause();
-		}
+		var canvas = document.getElementById("imageElement")
+		canvas.width = video.videoWidth;
+		canvas.height = video.videoHeight;
+		
+		canvas.getContext('2d').drawImage(video, 0, 0)
 	}
 	
 	function videoError(e) {
