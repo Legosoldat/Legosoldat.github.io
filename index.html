@@ -14,7 +14,7 @@
     height: 375px;
     border: 10px #333 solid;
 }
-#videoElement {
+#mediaElement {
     width: 500px;
     height: 375px;
     background-color: #666;
@@ -24,12 +24,17 @@
   
 <body>
 <div id="container">
-    <video autoplay="true" id="videoElement" onclick="handleClick()">
+    <video autoplay="true" id="mediaElement" onclick="handleClick()">
      
     </video>
 </div>
+<div id="container">
+	<img id="mediaElement">
+	
+	</img>
+</div>
 <script>
-	var video = document.querySelector("#videoElement");
+	var video = document.querySelector("#mediaElement");
 	
 	var paused = true
 	 
@@ -44,13 +49,12 @@
 	}
 	
 	function handleClick() {
-		alert('Test')
 		if (paused) {
 			paused = false
-			document.getElementByID('videoElement').play();
+			document.getElementByID('mediaElement').play();
 		} else {
 			paused = true
-			document.getElementByID('videoElement').pause();
+			document.getElementByID('mediaElement').pause();
 		}
 	}
 	
