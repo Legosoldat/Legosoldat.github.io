@@ -34,18 +34,20 @@
     </video>
 </div>
 <div id="container">
-	<img id="imageElement">
+	<canvas id="imageElement">
 	
-	</img>
+	</canvas>
 </div>
 <script>
 	var video = document.querySelector("#videoElement");
 	
 	var paused = true
-	 
-	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
-	 
+	
 	var canvas = document.getElementById("imageElement");
+	
+	var context = canvas.getContext('2d');
+	
+	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 	
 	if (navigator.getUserMedia) {       
 		navigator.getUserMedia({video: true}, handleVideo, videoError);
@@ -59,7 +61,7 @@
 		canvas.width = video.videoWidth;
 		canvas.height = video.videoHeight;
 		
-		canvas.getContext('2d').drawImage(video, 0, 0);
+		context.drawImage(video, 0, 0);
 	}
 	
 	function videoError(e) {
