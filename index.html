@@ -37,9 +37,11 @@
 </div>
 <br>
 <div id="container">
-	<canvas id="imageElement">
-	
-	</canvas>
+	<a id="downloadLink" onclick="downloadCanvas">
+		<canvas id="imageElement">
+		
+		</canvas>
+	</a>
 </div>
 <p id="demo"></p>
 <script>
@@ -54,6 +56,8 @@
 	var x = document.getElementById("demo");
 	
 	var img = new Image();
+	
+	var download = document.getElementById("downloadLink");
 	
 	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 	
@@ -89,16 +93,16 @@
 		x.innerHTML = "Latitude: " + position.coords.latitude + 
 		"<br>Longitude: " + position.coords.longitude;
 	}
-	function downloadCanvas(link, filename) {
-		alert(link + "<br>" + filename);
-		link.href = imageURL;
+	function downloadCanvas(link, canvasId, filename) {
+		link.href = document.getElementById(canvasId).toDataURL();
 		link.download = filename;
 	}
-	imageId.addEventListener('click', function() {
-		img.src = canvas.toDataURL('image/jpeg');
-		canvas.href = img.src;
-		canvas.download = 'Image.png';
+	download.addEventListener('click', function() {
+		downloadCanvas(this, 'canvas', 'Image.png');
 	}, false);
+	
+	
+	
 </script>
 </body>
 </html>
