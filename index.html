@@ -76,16 +76,16 @@
 		canvas.height = video.videoHeight;
 		
 		context.drawImage(video, 0, 0);
-		//showPosition(getLocation);
+		showPosition(getLocation(showPosition));
 	}
 	
 	function videoError(e) {
 		// do something
 	}
 
-	function getLocation() {
+	function getLocation(fuction1) {
 		if (navigator.geolocation) {
-			return navigator.geolocation.getCurrentPosition();
+			return navigator.geolocation.getCurrentPosition(function1);
 		} else { 
 			x.innerHTML = "Geolocation is not supported by this browser.";
 		}
@@ -126,7 +126,7 @@
 		link.download = filename;
 	}
 	download.addEventListener('click', function() {
-		downloadCanvas(this, canvas, 'Image.jpeg', getLocation());
+		downloadCanvas(this, canvas, 'Image.jpeg', getLocation(downloadCanvas));
 	}, false);
 	
 	
