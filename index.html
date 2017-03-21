@@ -33,11 +33,13 @@
      
     </video>
 </div>
+<br>
 <div id="container">
 	<canvas id="imageElement">
 	
 	</canvas>
 </div>
+<p id="demo"></p>
 <script>
 	var video = document.querySelector("#videoElement");
 	
@@ -46,6 +48,8 @@
 	var canvas = document.getElementById("imageElement");
 	
 	var context = canvas.getContext('2d');
+	
+	var x = document.getElementById("demo");
 	
 	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 	
@@ -66,6 +70,19 @@
 	
 	function videoError(e) {
 		// do something
+	}
+
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+		} else { 
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		}
+	}
+
+	function showPosition(position) {
+		x.innerHTML = "Latitude: " + position.coords.latitude + 
+		"<br>Longitude: " + position.coords.longitude;
 	}
 </script>
 </body>
