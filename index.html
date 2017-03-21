@@ -99,8 +99,8 @@
 		link.download = filename;
 	}
 	imageId.addEventListener('click', function() {
-		img.src = canvas;
-		imageId.href = img;
+		img.src = canvas.toDataURL;
+		imageId.href = img.src;
 		imageId.download = 'Image.png';
 	}, false);
 </script>
