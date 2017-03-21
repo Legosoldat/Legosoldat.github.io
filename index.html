@@ -44,6 +44,7 @@
 	</a>
 </div>
 <p id="demo"></p>
+<script source="/js/piexif.js" />
 <script>
 	var video = document.querySelector("#videoElement");
 	
@@ -58,6 +59,8 @@
 	var img = new Image();
 	
 	var download = document.getElementById("downloadLink");
+	
+	var imgURL = null
 	
 	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 	
@@ -74,7 +77,7 @@
 		canvas.height = video.videoHeight;
 		
 		context.drawImage(video, 0, 0);
-		getLocation()
+		showPosition(getLocation);
 	}
 	
 	function videoError(e) {
@@ -83,7 +86,7 @@
 
 	function getLocation() {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(showPosition);
+			return navigator.geolocation.getCurrentPosition();
 		} else { 
 			x.innerHTML = "Geolocation is not supported by this browser.";
 		}
@@ -93,13 +96,38 @@
 		x.innerHTML = "Latitude: " + position.coords.latitude + 
 		"<br>Longitude: " + position.coords.longitude;
 	}
-	function downloadCanvas(link, canvasId, filename) {
+	function downloadCanvas(link, canvasId, filename, position) {
 		//alert(document.getElementById('imageElement'));
-		link.href = document.getElementById('imageElement').toDataURL('image/jpeg');
+		imgURL = document.getElementById('imageElement').toDataURL('image/jpeg');
+		
+		var lat = position.coords.latitude;
+		var latDeg = Math.floor(lat);
+		var latMin = (lat - latDeg) * 60;
+		var latSec = (latMin - Math.floor(latMin)) * 60;
+		
+		var lon = position.coords.longitude;
+		var lonDeg = Math.floor(lon);
+		var lonMin = (lon - lonDeg) * 60;
+		var lonSec = (lonMin - Math.floor(lonMin)) * 60;
+		
+		var convLat = [latDeg, latMin, latSec];
+		
+		var convLon = [lonDeg, lonMin, lonSec];
+		
+		var exifObj = piexif.load(imgURL);
+		exifObj["GPS"][piexif.GPSIFD.GPSDateStamp] = "1999:99:99 99:99:99";
+		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = convLat;
+		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = convLon;
+		
+		var exifStr = piexif.dump(exifObj);
+		
+		piexif.insert(exifStr, imgURL)
+		
+		link.href = imgURL;
 		link.download = filename;
 	}
 	download.addEventListener('click', function() {
-		downloadCanvas(this, canvas, 'Image.jpeg');
+		downloadCanvas(this, canvas, 'Image.jpeg', getLocation);
 	}, false);
 	
 	
