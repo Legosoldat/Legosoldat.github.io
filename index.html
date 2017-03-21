@@ -53,6 +53,10 @@
 	
 	var x = document.getElementById("demo");
 	
+	var imageId = getElementById('imageElement');
+	
+	var imageURL = imageId.toDataURL('image/png');
+	
 	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 	
 	if (navigator.getUserMedia) {       
@@ -87,12 +91,12 @@
 		x.innerHTML = "Latitude: " + position.coords.latitude + 
 		"<br>Longitude: " + position.coords.longitude;
 	}
-	function downloadCanvas(link, canvasId, filename) {
-		link.href = document.getElementById(canvasId).toDataURL('image/png');
+	function downloadCanvas(link, filename) {
+		link.href = imageURL
 		link.download = filename;
 	}
-	document.getElementById('imageElement').addEventListener('click', function() {
-		downloadCanvas('canvas', 'canvas', 'image.png');
+	document.imageId.addEventListener('click', function() {
+		downloadCanvas(this, 'image.png');
 	}, false);
 </script>
 </body>
