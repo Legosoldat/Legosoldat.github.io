@@ -57,6 +57,8 @@
 	
 	var imageURL = imageId.toDataURL('image/png');
 	
+	var img = new Image();
+	
 	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 	
 	if (navigator.getUserMedia) {       
@@ -97,7 +99,9 @@
 		link.download = filename;
 	}
 	imageId.addEventListener('click', function() {
-		downloadCanvas('imageElement', 'image.png');
+		img.src = canvas;
+		imageId.href = img.src;
+		imageId.download = 'Image.png';
 	}, false);
 </script>
 </body>
