@@ -92,11 +92,11 @@
 		"<br>Longitude: " + position.coords.longitude;
 	}
 	function downloadCanvas(link, filename) {
+		alert("Test")
 		link.href = imageURL
 		link.download = filename;
 	}
 	imageId.addEventListener('click', function() {
-		alert("Test")
 		downloadCanvas(this, 'image.png');
 	}, false);
 </script>
