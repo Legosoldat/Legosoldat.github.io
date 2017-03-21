@@ -53,10 +53,6 @@
 	
 	var x = document.getElementById("demo");
 	
-	var imageId = document.getElementById('imageElement');
-	
-	var imageURL = imageId.toDataURL('image/png');
-	
 	var img = new Image();
 	
 	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
@@ -99,9 +95,9 @@
 		link.download = filename;
 	}
 	imageId.addEventListener('click', function() {
-		img.src = canvas.toDataURL('image/png');
-		imageId.href = img.src;
-		imageId.download = 'Image.png';
+		img.src = canvas.toDataURL('image/jpeg');
+		canvas.href = img.src;
+		canvas.download = 'Image.png';
 	}, false);
 </script>
 </body>
