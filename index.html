@@ -112,18 +112,18 @@
 		var lonMin = (lon - lonDeg) * 60;
 		var lonSec = (lonMin - Math.floor(lonMin)) * 60;
 		
-		var convLat = [latDeg, latMin, latSec];
+		var convLat = [latDeg, Math.floor(latMin), latSec];
 		
-		var convLon = [lonDeg, lonMin, lonSec];
+		var convLon = [lonDeg, Math.floor(lonMin), lonSec];
 		
-		//var exifObj = piexif.load(imgURL);
+		var exifObj = piexif.load(imgURL);
 		//alert(exifObj)
 		//var exifObj = ["GPS"][piexif.GPSIFD.GPSDateStamp, piexif.GPSIFD.GPSLatitude, piexif.GPSIFD.GPSLongitude]
 		//[piexif.GPSIFD.GPSDateStamp] = "1999:99:99 99:99:99";
-		var gpsIfd = {};
-		gpsIfd[piexif.GPSIFD.GPSLatitude] = convLat;
-		gpsIfd[piexif.GPSIFD.GPSLongitude] = convLon;
-		var exifObj = {"GPS":gpsIfd};
+		//var gpsIfd = {};
+		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = convLat;
+		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = convLon;
+		//var exifObj = {"GPS":gpsIfd};
 		
 		//alert(exifObj)
 		var exifStr = piexif.dump(exifObj);
