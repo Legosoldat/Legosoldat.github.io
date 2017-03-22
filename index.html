@@ -95,7 +95,7 @@
 		x.innerHTML = "Latitude: " + position.coords.latitude + 
 		"<br>Longitude: " + position.coords.longitude;
 	}
-	function downloadCanvas(link, canvasId, filename) {
+	function downloadCanvas(position, link, canvasId, filename) {
 		//alert(document.getElementById('imageElement'));
 		imgURL = document.getElementById('imageElement').toDataURL('image/jpeg');
 		
