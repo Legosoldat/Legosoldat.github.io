@@ -116,8 +116,6 @@
 		
 		var convLon = [lonDeg, lonMin, lonSec];
 		
-		var exifObj = {};
-		
 		//var exifObj = piexif.load(imgURL);
 		//alert(exifObj)
 		//var exifObj = ["GPS"][piexif.GPSIFD.GPSDateStamp, piexif.GPSIFD.GPSLatitude, piexif.GPSIFD.GPSLongitude]
@@ -125,10 +123,10 @@
 		var gpsIfd = {};
 		gpsIfd[piexif.GPSIFD.GPSLatitude] = convLat;
 		gpsIfd[piexif.GPSIFD.GPSLongitude] = convLon;
-		exifObj = {"GPS":gpsIfd};
+		var exifObj = {"GPS":gpsIfd};
 		
 		alert(exifObj)
-		var exifStr = piexif.dump(exifObj.GPS);
+		var exifStr = piexif.dump(exifObj);
 		
 		piexif.insert(exifStr, imgURL)
 		
