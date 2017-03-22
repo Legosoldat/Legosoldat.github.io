@@ -125,7 +125,7 @@
 		gpsIfd[piexif.GPSIFD.GPSLongitude] = convLon;
 		var exifObj = {"GPS":gpsIfd};
 		
-		//alert(exifObj)
+		alert(exifObj)
 		var exifStr = piexif.dump(exifObj);
 		
 		piexif.insert(exifStr, imgURL)
