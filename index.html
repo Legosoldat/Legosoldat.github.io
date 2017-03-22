@@ -100,7 +100,7 @@
 		//alert(document.getElementById('imageElement'));
 		imgURL = document.getElementById('imageElement').toDataURL('image/jpeg');
 		
-		alert(imgURL)
+		//alert(imgURL)
 		
 		var lat = position.coords.latitude;
 		var latDeg = Math.floor(lat);
@@ -118,20 +118,15 @@
 		
 		//var exifObj = piexif.load(imgURL);
 		//alert(exifObj)
-		/*var exifObj = ["GPS"][piexif.GPSIFD.GPSDateStamp, piexif.GPSIFD.GPSLatitude, piexif.GPSIFD.GPSLongitude]
-		exifObj["GPS"][piexif.GPSIFD.GPSDateStamp] = "1999:99:99 99:99:99";
-		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = convLat;
-		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = convLon;*/
-		
-		var exif_dict = {
-			"GPS":{
-				"piexif.GPSIFD.GPSLatitude": convLat,
-				"piexif.GPSIFD.GPSLongitude": convLon
-			}
-		};
+		//var exifObj = ["GPS"][piexif.GPSIFD.GPSDateStamp, piexif.GPSIFD.GPSLatitude, piexif.GPSIFD.GPSLongitude]
+		//[piexif.GPSIFD.GPSDateStamp] = "1999:99:99 99:99:99";
+		var gpsIfd = {};
+		gpsIfd[piexif.GPSIFD.GPSLatitude] = convLat;
+		gpsIfd[piexif.GPSIFD.GPSLongitude] = convLon;
+		var exifObj = {"GPS":gpsIfd};
 		
 		//alert(exifObj)
-		var exifStr = piexif.dump(exif_dict);
+		var exifStr = piexif.dump(exifObj);
 		
 		piexif.insert(exifStr, imgURL)
 		
