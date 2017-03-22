@@ -120,7 +120,7 @@
 		//alert(exifObj)
 		//var exifObj = ["GPS"][piexif.GPSIFD.GPSDateStamp, piexif.GPSIFD.GPSLatitude, piexif.GPSIFD.GPSLongitude]
 		//[piexif.GPSIFD.GPSDateStamp] = "1999:99:99 99:99:99";
-		var gpsIfd = {};
+		/*var gpsIfd = {};
 		gpsIfd[piexif.GPSIFD.GPSLatitude] = convLat;
 		gpsIfd[piexif.GPSIFD.GPSLongitude] = convLon;
 		var exifObj = {"GPS":gpsIfd};
@@ -128,7 +128,7 @@
 		alert(exifObj)
 		var exifStr = piexif.dump(exifObj);
 		
-		piexif.insert(exifStr, imgURL)
+		piexif.insert(exifStr, imgURL)*/
 		
 		link.href = imgURL;
 		link.download = filename;
