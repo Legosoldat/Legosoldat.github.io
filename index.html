@@ -116,19 +116,14 @@
 		
 		var convLon = [lonDeg, lonMin, lonSec];
 		
-		//var exifObj = piexif.load(imgURL);
-		//alert(exifObj)
+		var exifObj = piexif.load(imgURL);
+		alert(exifObj)
 		
-		gps_ifd = {piexif.GPSIFD.GPSLatitude: convLat,
-				   piexif.GPSIFD.GPSLongitude: convLon
-		}
-		
-		/*exifObj["GPS"][piexif.GPSIFD.GPSDateStamp] = "1999:99:99 99:99:99";
+		exifObj["GPS"][piexif.GPSIFD.GPSDateStamp] = "1999:99:99 99:99:99";
 		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = convLat;
 		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = convLon;
-		alert(exifObj)*/
-		var exif_dict = {"GPS":gps_ifd}
-		var exifStr = piexif.dump(exif_dict);
+		alert(exifObj)
+		var exifStr = piexif.dump(exifObj);
 		
 		piexif.insert(exifStr, imgURL)
 		
