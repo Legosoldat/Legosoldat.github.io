@@ -101,11 +101,7 @@
 	}
 	function downloadCanvas(position, link, canvasId, filename) {
 		//alert(document.getElementById('imageElement'));
-		//imgURL = document.getElementById('imageElement').toDataURL('image/jpeg');
-		
-		var myImage = new Image(180, 180);
-		myImage.src = 'http://wiki.openstreetmap.org/w/images/a/a8/Mapillary_logo.png';
-		imgURL = myImage.toDataURL('image/png')
+		imgURL = document.getElementById('imageElement').toDataURL('image/jpeg');
 		
 		//alert(imgURL)
 		
