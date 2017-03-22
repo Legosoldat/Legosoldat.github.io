@@ -136,7 +136,7 @@
 	download.addEventListener('click', function() {
 		var link = this
 		
-		navigator.geolocation.getCurrentPosition(downloadCanvas(link, canvas, 'Image.jpeg'), options={enableHighAccuracy:true});
+		navigator.geolocation.getCurrentPosition(downloadCanvas(link, canvas, 'Image.jpeg'));
 	}, false);
 	
 	
