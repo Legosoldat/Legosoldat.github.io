@@ -43,7 +43,7 @@
 		</canvas>
 	</a>
 </div>
-<p id="demo"></p>
+<!--<p id="demo"></p>-->
 <script source="/js/piexif.js">
 	var video = document.querySelector("#videoElement");
 	
@@ -76,7 +76,7 @@
 		canvas.height = video.videoHeight;
 		
 		context.drawImage(video, 0, 0);
-		showPosition(getLocation(showPosition));
+		//showPosition(getLocation(showPosition));
 	}
 	
 	function videoError(e) {
@@ -85,7 +85,7 @@
 
 	function getLocation(function1) {
 		if (navigator.geolocation) {
-			return navigator.geolocation.getCurrentPosition(function1);
+			navigator.geolocation.getCurrentPosition();
 		} else { 
 			x.innerHTML = "Geolocation is not supported by this browser.";
 		}
@@ -95,9 +95,11 @@
 		x.innerHTML = "Latitude: " + position.coords.latitude + 
 		"<br>Longitude: " + position.coords.longitude;
 	}
-	function downloadCanvas(link, canvasId, filename, position) {
+	function downloadCanvas(link, canvasId, filename) {
 		//alert(document.getElementById('imageElement'));
 		imgURL = document.getElementById('imageElement').toDataURL('image/jpeg');
+		
+		
 		
 		var lat = position.coords.latitude;
 		var latDeg = Math.floor(lat);
@@ -126,7 +128,9 @@
 		link.download = filename;
 	}
 	download.addEventListener('click', function() {
-		downloadCanvas(this, canvas, 'Image.jpeg', getLocation(downloadCanvas));
+		var link = this
+		
+		navigator.geolocation.getCurrentPosition(downloadCanvas(link, canvas, 'Image.jpeg'));
 	}, false);
 	
 	
