@@ -100,7 +100,7 @@
 		//alert(document.getElementById('imageElement'));
 		imgURL = document.getElementById('imageElement').toDataURL('image/jpeg');
 		
-		alert(imgURL)
+		//alert(imgURL)
 		
 		var lat = position.coords.latitude;
 		var latDeg = Math.floor(lat);
@@ -125,7 +125,7 @@
 		gpsIfd[piexif.GPSIFD.GPSLongitude] = convLon;
 		var exifObj = {"GPS":gpsIfd};
 		
-		alert(exifObj)
+		//alert(exifObj)
 		var exifStr = piexif.dump(exifObj);
 		
 		newImgURL = piexif.insert(exifStr, imgURL)
