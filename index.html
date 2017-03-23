@@ -105,11 +105,16 @@
 		
 		//alert(imgURL)
 		
+		var latRef = null
+		var lonRef = null
+		
+		if (lat < 0) {latRef = 'W'; Math.abs(lat)} else {latRef = 'E'}
 		var lat = position.coords.latitude;
 		var latDeg = Math.floor(lat);
 		var latMin = (lat - latDeg) * 60;
 		var latSec = Math.floor((latMin - Math.floor(latMin)) * 6000)/100;
 		
+		if (lon < 0) {lonRef = 'S'; Math.abs(lon)} else {lonRef = 'N'}
 		var lon = position.coords.longitude;
 		var lonDeg = Math.floor(lon);
 		var lonMin = (lon - lonDeg) * 60;
@@ -126,6 +131,8 @@
 		//var gpsIfd = {};
 		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = convLat;
 		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = convLon;
+		exifObj["GPS"][piexif.GPSIFD.GPSLatitudeRef] = latRef;
+		exifObj["GPS"][piexif.GPSIFD.GPSLongitudeRef] = lonRef;
 		//var exifObj = {"GPS":gpsIfd};
 		
 		alert(exifObj)
