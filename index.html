@@ -138,9 +138,9 @@
 		//alert(exifObj)
 		var exifStr = piexif.dump(exifObj);
 		
-		//newImgURL = piexif.insert(exifStr, imgURL)
+		newImgURL = piexif.insert(exifStr, imgURL)
 		
-		link.href = newImgURL;
+		link.href = imgURL;
 		link.download = filename;
 	}
 	download.addEventListener('click', function() {
