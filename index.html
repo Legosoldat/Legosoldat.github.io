@@ -133,6 +133,7 @@
 		//alert(exifObj)
 		//var exifObj = ["GPS"][piexif.GPSIFD.GPSDateStamp, piexif.GPSIFD.GPSLatitude, piexif.GPSIFD.GPSLongitude]
 		//var gpsIfd = {};
+		exifObj[piexif.GPSIFD.GPSVersionID] = [7, 7, 7, 7];
 		exifObj["GPS"][piexif.GPSIFD.GPSDateStamp] = "2017:03:23 10:04:40";
 		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = [[55], [29], [14.18]];
 		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = convLon;
