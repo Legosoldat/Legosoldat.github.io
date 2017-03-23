@@ -40,6 +40,17 @@
 	cursor: pointer;
 	border: 10px #333 solid;
 }
+#downloadPicture {
+	position: absolute;
+	padding: 5px 10px;
+	margin: 0px 198px;
+	bottom: 100px;
+	width: 64px;
+	height: 64px;
+	background-color: #666;
+	cursor: pointer;
+	border: 10px #333 solid;
+}
 </style>
 </head>
   
@@ -49,17 +60,22 @@
 		
     </video>
 	<div id="takePicture" onclick="handleClick()">
-		<img src="/photo-camera.png">
+		<img src="resources/photo-camera.png">
 		
 		</img>
 	</div>
 </div>
 <br>
 <div id="container">
-	<a id="downloadLink" onclick="downloadCanvas">
-		<canvas id="imageElement">
+	<canvas id="imageElement">
 		
-		</canvas>
+	</canvas>
+	<a id="downloadLink" onclick="downloadCanvas">
+		<div id="downloadPicture">
+			<img src="resources/down-arrow.png">
+				
+			</img>
+		</div>
 	</a>
 </div>
 <p id="demo"></p>
