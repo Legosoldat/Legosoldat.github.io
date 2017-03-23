@@ -127,16 +127,16 @@
 		var convLon = [[lonDeg], [lonMin], [lonSec]];
 		
 		x.innerHTML = "Latitude: " + latRef + latDeg + "°" + latMin + "'" + latSec + '"' + 
-		"<br>Longitude: " + lonRef + lonDeg + "°" + latMin + "'" + latSec + '"';
+		"<br>Longitude: " + lonRef + lonDeg + "°" + lonMin + "'" + lonSec + '"';
 		
 		var exifObj = piexif.load(imgURL);
 		//alert(exifObj)
 		//var exifObj = ["GPS"][piexif.GPSIFD.GPSDateStamp, piexif.GPSIFD.GPSLatitude, piexif.GPSIFD.GPSLongitude]
 		//[piexif.GPSIFD.GPSDateStamp] = "1999:99:99 99:99:99";
 		//var gpsIfd = {};
-		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = convLat;
+		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = [[55], [29], [14.18]];
 		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = convLon;
-		exifObj["GPS"][piexif.GPSIFD.GPSLatitudeRef] = latRef;
+		exifObj["GPS"][piexif.GPSIFD.GPSLatitudeRef] = 'N';
 		exifObj["GPS"][piexif.GPSIFD.GPSLongitudeRef] = lonRef;
 		//var exifObj = {"GPS":gpsIfd};
 		
