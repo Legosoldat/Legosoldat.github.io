@@ -108,14 +108,14 @@
 		var latRef = null
 		var lonRef = null
 		
-		if (lat < 0) {latRef = 'W'; Math.abs(lat)} else {latRef = 'E'}
+		if (lat < 0) {latRef = 'S'; Math.abs(lat)} else {latRef = 'N'}
 		var lat = position.coords.latitude;
 		var latDeg = Math.floor(lat);
 		var latMin = (lat - latDeg) * 60;
 		var latSec = Math.floor((latMin - Math.floor(latMin)) * 6000)/100;
 		latMin = Math.floor(latMin)
 		
-		if (lon < 0) {lonRef = 'S'; Math.abs(lon)} else {lonRef = 'N'}
+		if (lon < 0) {lonRef = 'W'; Math.abs(lon)} else {lonRef = 'E'}
 		var lon = position.coords.longitude;
 		var lonDeg = Math.floor(lon);
 		var lonMin = (lon - lonDeg) * 60;
