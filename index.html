@@ -46,7 +46,7 @@
 		</canvas>
 	</a>
 </div>
-<!--<p id="demo"></p>-->
+<p id="demo"></p>
 <script src="/js/piexif.js"> </script>
 <script>
 	var video = document.querySelector("#videoElement");
@@ -113,16 +113,21 @@
 		var latDeg = Math.floor(lat);
 		var latMin = (lat - latDeg) * 60;
 		var latSec = Math.floor((latMin - Math.floor(latMin)) * 6000)/100;
+		latMin = Math.floor(latMin)
 		
 		if (lon < 0) {lonRef = 'S'; Math.abs(lon)} else {lonRef = 'N'}
 		var lon = position.coords.longitude;
 		var lonDeg = Math.floor(lon);
 		var lonMin = (lon - lonDeg) * 60;
 		var lonSec = Math.floor((lonMin - Math.floor(lonMin)) * 6000)/100;
+		lonMin = Math.floor(lonMin)
 		
-		var convLat = [[latDeg], [Math.floor(latMin)], [latSec]];
+		var convLat = [[latDeg], [latMin], [latSec]];
 		
-		var convLon = [[lonDeg], [Math.floor(lonMin)], [lonSec]];
+		var convLon = [[lonDeg], [lonMin], [lonSec]];
+		
+		x.innerHTML = "Latitude: " + latRef + latDeg + "°" + latMin + "'" + latSec + '"' + 
+		"<br>Longitude: " + lonRef + lonDeg + "°" + latMin + "'" + latSec + '"';
 		
 		var exifObj = piexif.load(imgURL);
 		//alert(exifObj)
