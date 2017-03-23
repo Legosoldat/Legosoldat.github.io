@@ -132,8 +132,8 @@
 		var exifObj = piexif.load(imgURL);
 		//alert(exifObj)
 		//var exifObj = ["GPS"][piexif.GPSIFD.GPSDateStamp, piexif.GPSIFD.GPSLatitude, piexif.GPSIFD.GPSLongitude]
-		//[piexif.GPSIFD.GPSDateStamp] = "1999:99:99 99:99:99";
 		//var gpsIfd = {};
+		exifObj[piexif.GPSIFD.GPSDateStamp] = "2017:03:23 10:04:40";
 		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = [[55], [29], [14.18]];
 		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = convLon;
 		exifObj["GPS"][piexif.GPSIFD.GPSLatitudeRef] = 'N';
