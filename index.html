@@ -120,16 +120,16 @@
 		var latRef = null
 		var lonRef = null
 		
+		var lat = position.coords.latitude * 10000000;
 		if (lat < 0) {latRef = 'S'; Math.abs(lat)} else {latRef = 'N'}
-		var lat = position.coords.latitude;
-		var latDeg = Math.floor(lat);
+		/*var latDeg = Math.floor(lat);
 		var latMin = (lat - latDeg) * 60;
 		var latSec = Math.floor((latMin - Math.floor(latMin)) * 6000)/100;
-		latMin = Math.floor(latMin)
+		latMin = Math.floor(latMin)*/
 		
+		var lon = position.coords.longitude * 10000000;
 		if (lon < 0) {lonRef = 'W'; Math.abs(lon)} else {lonRef = 'E'}
-		var lon = position.coords.longitude;
-		var lonDeg = Math.floor(lon);
+		/*var lonDeg = Math.floor(lon);
 		var lonMin = (lon - lonDeg) * 60;
 		var lonSec = Math.floor((lonMin - Math.floor(lonMin)) * 6000)/100;
 		lonMin = Math.floor(lonMin)
@@ -139,7 +139,7 @@
 		var convLon = [[lonDeg], [lonMin], [lonSec]];
 		
 		x.innerHTML = "Latitude: " + latRef + latDeg + "°" + latMin + "'" + latSec + '"' + 
-		"<br>Longitude: " + lonRef + lonDeg + "°" + lonMin + "'" + lonSec + '"';
+		"<br>Longitude: " + lonRef + lonDeg + "°" + lonMin + "'" + lonSec + '"';*/
 		
 		var exifObj = piexif.load(imgURL);
 		//alert(exifObj)
@@ -148,9 +148,9 @@
 		exifObj["Exif"][piexif.ExifIFD.DateTimeOriginal] = getFullTime()
 		exifObj["GPS"][piexif.GPSIFD.GPSVersionID] = [7, 7, 7, 7];
 		exifObj["GPS"][piexif.GPSIFD.GPSDateStamp] = "2017:03:23 10:04:40";
-		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = [[55], [29], [14.18]];
-		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = convLon;
-		exifObj["GPS"][piexif.GPSIFD.GPSLatitudeRef] = 'N';
+		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = [lat, 10000000]
+		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = [lon, 10000000]
+		exifObj["GPS"][piexif.GPSIFD.GPSLatitudeRef] = latRef;
 		exifObj["GPS"][piexif.GPSIFD.GPSLongitudeRef] = lonRef;
 		//var exifObj = {"GPS":gpsIfd};
 		
