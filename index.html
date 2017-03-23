@@ -29,13 +29,22 @@
     background-color: #666;
 	cursor:pointer;
 }
+#takePicture {
+	width: 100px;
+	height 100px;
+	background-color: #666;
+	cursor: pointer;
+	border: 10px #333 solid;
+}
 </style>
 </head>
   
 <body>
 <div id="container">
     <video autoplay="true" id="videoElement" onclick="handleClick()">
-     
+		<div id="takePicture">
+			
+		</div>
     </video>
 </div>
 <br>
