@@ -101,7 +101,8 @@
 	}
 	
 	function getFullTime() {
-		return Date.getFullYear() + ":" + Date.getMonth() + ":" + Date.getDate() + " " + Date.getHours() + ":" + Date.getMinutes() + ":" + Date.getSeconds();
+		var d = new Date();
+		return d.getFullYear() + ":" + d.getMonth() + ":" + d.getd() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 	}
 	function downloadCanvas(position, link, canvasId, filename) {
 		//alert(document.getElementById('imageElement'));
