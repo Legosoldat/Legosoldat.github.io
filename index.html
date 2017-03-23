@@ -102,7 +102,13 @@
 	
 	function getFullTime() {
 		var d = new Date();
-		var fullTime = d.getFullYear() + ":" + d.getMonth() + ":" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+		var timeArray = [d.getFullYear(), d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds()]
+		for (i = 0; i < timeArray.length(); i++) {
+			if (timeArray[i].length() < 2) {
+				timeArray[i] = "0" + timeArray[i]
+			}
+		}
+		var fullTime = timeArray[0] + ":" + timeArray[1] + ":" + timeArray[2] + " " + timeArray[3] + ":" + timeArray[4] + ":" + timeArray[5];
 		return fullTime;
 	}
 	function downloadCanvas(position, link, canvasId, filename) {
