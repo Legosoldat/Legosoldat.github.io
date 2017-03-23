@@ -145,7 +145,7 @@
 		
 		newImgURL = piexif.insert(exifStr, imgURL)
 		
-		link.href = imgURL;
+		link.href = newImgURL;
 		link.download = filename;
 	}
 	download.addEventListener('click', function() {
