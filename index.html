@@ -148,10 +148,14 @@
 		exifObj["Exif"][piexif.ExifIFD.DateTimeOriginal] = getFullTime()
 		exifObj["GPS"][piexif.GPSIFD.GPSVersionID] = [7, 7, 7, 7];
 		exifObj["GPS"][piexif.GPSIFD.GPSDateStamp] = "2017:03:23 10:04:40";
-		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = [lat, 10000000]
+		/*exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = [lat, 10000000]
 		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = [lon, 10000000]
 		exifObj["GPS"][piexif.GPSIFD.GPSLatitudeRef] = latRef;
-		exifObj["GPS"][piexif.GPSIFD.GPSLongitudeRef] = lonRef;
+		exifObj["GPS"][piexif.GPSIFD.GPSLongitudeRef] = lonRef;*/
+		exifObj["GPS"][piexif.GPSIFD.GPSLatitudeRef] = "N";
+		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = [366132304, 10000000],
+		exifObj["GPS"][piexif.GPSIFD.GPSLongitudeRef] = "W";
+		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = [1219323420, 10000000];
 		//var exifObj = {"GPS":gpsIfd};
 		
 		//alert(exifObj)
