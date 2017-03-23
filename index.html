@@ -135,10 +135,10 @@
 		exifObj["GPS"][piexif.GPSIFD.GPSLongitudeRef] = lonRef;
 		//var exifObj = {"GPS":gpsIfd};
 		
-		alert(exifObj)
+		//alert(exifObj)
 		var exifStr = piexif.dump(exifObj);
 		
-		newImgURL = piexif.insert(exifStr, imgURL)
+		//newImgURL = piexif.insert(exifStr, imgURL)
 		
 		link.href = newImgURL;
 		link.download = filename;
