@@ -103,7 +103,7 @@
 	function getFullTime() {
 		var d = new Date();
 		var timeArray = [d.getFullYear(), d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds()]
-		for (i = 0; i < timeArray.length(); i++) {
+		for (i = 0; i < timeArray.length; i++) {
 			if (timeArray[i].length < 2) {
 				timeArray[i] = "0" + timeArray[i]
 			}
