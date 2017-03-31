@@ -205,8 +205,8 @@
 		exifObj["GPS"][piexif.GPSIFD.GPSDateStamp] = "2017:03:23 10:04:40";
 		exifObj["GPS"][piexif.GPSIFD.GPSLatitude] = convLat
 		exifObj["GPS"][piexif.GPSIFD.GPSLongitude] = convLon
-		exifObj["GPS"][piexif.GPSIFD.GPSLatitudeRef] = latRef;
-		exifObj["GPS"][piexif.GPSIFD.GPSLongitudeRef] = lonRef;
+		exifObj["GPS"][piexif.GPSIFD.GPSLatitudeRef] = latArray[0];
+		exifObj["GPS"][piexif.GPSIFD.GPSLongitudeRef] = lonArray[1];
 		
 		//Loading the piexif object back into a string
 		var exifStr = piexif.dump(exifObj);
