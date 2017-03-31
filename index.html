@@ -108,9 +108,11 @@
 		navigator.getUserMedia({video: true}, handleVideo, videoError);
 	}
 	
-	function formatCoordinates(position) {
+	function formatCoordinates() {
 		var latRef = null;
 		var lonRef = null;
+		
+		var position = getLocation();
 		
 		//Formatting the latitude so that it fits for the exif data
 		var lat = position.coords.latitude;
@@ -144,7 +146,7 @@
 		//Drawing the current frame of the video to the canvas frame
 		context.drawImage(video, 0, 0);
 		//Getting, formating and displaying coordinates on the page
-		var coordsArray = formatCoordinates(getLocation);
+		var coordsArray = formatCoordinates();
 		var latArray = coordsArray[0]
 		var lonArray = coordsArray[1]
 		showPosition(latArray, lonArray)
@@ -156,7 +158,7 @@
 
 	function getLocation() {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition();
+			return navigator.geolocation.getCurrentPosition();
 		} else { 
 			x.innerHTML = "Geolocation is not supported by this browser.";
 		}
