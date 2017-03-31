@@ -144,7 +144,7 @@
 		//Drawing the current frame of the video to the canvas frame
 		context.drawImage(video, 0, 0);
 		//Getting, formating and displaying coordinates on the page
-		var coordsArray = formatCoordinates(navigator.geolocation.getCurrentPosition);
+		var coordsArray = formatCoordinates(getLocation);
 		var latArray = coordsArray[0]
 		var lonArray = coordsArray[1]
 		showPosition(latArray, lonArray)
@@ -154,7 +154,7 @@
 		x.innerHTML = "Could not get video."
 	}
 
-	function getLocation(function1) {
+	function getLocation() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition();
 		} else { 
