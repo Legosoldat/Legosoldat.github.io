@@ -146,7 +146,7 @@
 		//Drawing the current frame of the video to the canvas frame
 		context.drawImage(video, 0, 0);
 		//Getting, formating and displaying coordinates on the page
-		var coordsArray = formatCoordinates();
+		var coordsArray = getLocation();
 		var latArray = coordsArray[0]
 		var lonArray = coordsArray[1]
 		showPosition(latArray, lonArray)
