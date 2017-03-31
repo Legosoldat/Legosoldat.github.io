@@ -108,7 +108,7 @@
 		navigator.getUserMedia({video: true}, handleVideo, videoError);
 	}
 	
-	function formatCoordinates(position) {
+	function formatCoordinates(position, print) {
 		var latRef = null;
 		var lonRef = null;
 		
@@ -128,7 +128,11 @@
 		var lonSec = Math.floor(lonMin - Math.floor(lonMin)) * 6000;
 		lonMin = Math.floor(lonMin)
 		
-		return [[latRef, latDeg, latMin, latSec], [lonRef. lonDeg, lonMin, lonSec]];
+		if (print) {
+			showPosition(latArray, lonArray);
+		} else {
+			return [[latRef, latDeg, latMin, latSec], [lonRef. lonDeg, lonMin, lonSec]];
+		}
 	}
 	 
 	function handleVideo(stream) {
@@ -144,19 +148,18 @@
 		//Drawing the current frame of the video to the canvas frame
 		context.drawImage(video, 0, 0);
 		//Getting, formating and displaying coordinates on the page
-		var coordsArray = getLocation();
+		var coordsArray = getLocation(true);
 		var latArray = coordsArray[0]
 		var lonArray = coordsArray[1]
-		showPosition(latArray, lonArray)
 	}
 	
 	function videoError(e) {
 		x.innerHTML = "Could not get video."
 	}
 
-	function getLocation() {
+	function getLocation(print) {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {formatCoordinates(position)});
+			navigator.geolocation.getCurrentPosition(function(position, print) {formatCoordinates(position, print)});
 		} else { 
 			x.innerHTML = "Geolocation is not supported by this browser.";
 		}
@@ -187,7 +190,7 @@
 		//Gets the image URL
 		imgURL = document.getElementById('imageElement').toDataURL('image/jpeg');
 		
-		var coordsArray = formatCoordinates(position);
+		var coordsArray = formatCoordinates(position, false);
 		var latArray = coordsArray[0];
 		var lonArray = coordsArray[1];
 		
