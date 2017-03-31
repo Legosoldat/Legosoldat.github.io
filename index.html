@@ -108,11 +108,9 @@
 		navigator.getUserMedia({video: true}, handleVideo, videoError);
 	}
 	
-	function formatCoordinates() {
+	function formatCoordinates(position) {
 		var latRef = null;
 		var lonRef = null;
-		
-		var position = getLocation();
 		
 		//Formatting the latitude so that it fits for the exif data
 		var lat = position.coords.latitude;
@@ -158,7 +156,7 @@
 
 	function getLocation() {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(formatCoordinates);
+			navigator.geolocation.getCurrentPosition(function(position) {formatCoordinates(position)});
 		} else { 
 			x.innerHTML = "Geolocation is not supported by this browser.";
 		}
